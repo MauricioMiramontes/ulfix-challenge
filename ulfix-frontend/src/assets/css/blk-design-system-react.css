@@ -6048,7 +6048,7 @@ button.bg-darker:focus {
 
 .mb-3,
 .my-3 {
-  margin-bottom: 1rem !important; }
+  margin-bottom: 1px !important; }
 
 .ml-3,
 .mx-3 {
@@ -13735,9 +13735,9 @@ hr {
     z-index: 0; }
 
 .section-coins {
-  margin-top: 200px; }
+  margin-top: 100px; }
   .section-coins h1 {
-    margin-bottom: 150px; }
+    margin-bottom: 50px; }
 
 .section-nucleo-icons {
   --icon-size: 5rem;
@@ -15881,7 +15881,7 @@ input.datetimepicker[data-color="yellow"] + .bootstrap-datetimepicker-widget {
       box-shadow: 0px 5px 50px 0px rgba(0, 0, 0, 0.2); }
   .card-register .card-footer {
     margin-bottom: 10px;
-    margin-top: 24px; }
+    margin-top: 1px; }
 
 @media (max-width: 991.98px) {
   .card.card-register .card-img {
@@ -16706,5 +16706,3 @@ td.rdtYear:hover {
   color: #1d8cf8; }
   .blockquote.blockquote-info small {
     color: #1d8cf8; }
-
-/*# sourceMappingURL=blk-design-system-react.css.map */
