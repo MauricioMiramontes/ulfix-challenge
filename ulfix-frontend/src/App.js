@@ -8,7 +8,7 @@ import SignUp from './views/SignUp.js'
 import UserList from './views/UserList.js'
 
 function App () {
-  const [isAuthenticated, setIsAuthenticated] = useState(true)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [lenguage, setLenguage] = useState('es')
 
   return (
@@ -21,6 +21,7 @@ function App () {
               lenguage={lenguage}
               changeLenguage={(e) => setLenguage(e)}
               isAuthenticated={isAuthenticated}
+              setIsAuthenticated={(e) => setIsAuthenticated(e)}
             />
           }
         />
@@ -31,6 +32,7 @@ function App () {
               lenguage={lenguage}
               changeLenguage={(e) => setLenguage(e)}
               isAuthenticated={isAuthenticated}
+              setIsAuthenticated={(e) => setIsAuthenticated(e)}
             />
           }
         />
@@ -63,6 +65,7 @@ function App () {
               lenguage={lenguage}
               changeLenguage={(e) => setLenguage(e)}
               isAuthenticated={isAuthenticated}
+              setIsAuthenticated={(e) => setIsAuthenticated(e)}
             />
           }
         />
