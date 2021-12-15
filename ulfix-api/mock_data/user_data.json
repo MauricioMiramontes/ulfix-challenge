@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "name": "Celestial",
     "email": "Celestial@email.com",
     "password": "Celestial",
@@ -8,7 +8,7 @@
     "updated": "2020-05-20T00:00:00.000Z"
   },
   {
-    "id": 2,
+    "id": "2",
     "name": "Mariana",
     "email": "Mariana@email.com",
     "password": "Mariana",
@@ -16,7 +16,7 @@
     "updated": "2020-05-20T00:00:00.000Z"
   },
   {
-    "id": 3,
+    "id": "3",
     "name": "Aurelia",
     "email": "Aurelia@email.com",
     "password": "Aurelia",
@@ -24,7 +24,7 @@
     "updated": "2020-05-20T00:00:00.000Z"
   },
   {
-    "id": 4,
+    "id": "4",
     "name": "Lilith",
     "email": "Lilith@email.com",
     "password": "Lilith",
@@ -32,7 +32,7 @@
     "updated": "2020-05-20T00:00:00.000Z"
   },
   {
-    "id": 5,
+    "id": "5",
     "name": "Jade",
     "email": "Jade@email.com",
     "password": "Jade",
@@ -40,7 +40,7 @@
     "updated": "2020-05-20T00:00:00.000Z"
   },
   {
-    "id": 6,
+    "id": "6",
     "name": "Celeste",
     "email": "Celeste@email.com",
     "password": "Celeste",
@@ -48,7 +48,7 @@
     "updated": "2020-05-20T00:00:00.000Z"
   },
   {
-    "id": 7,
+    "id": "7",
     "name": "Bianca",
     "email": "Bianca@email.com",
     "password": "Bianca",
@@ -56,7 +56,7 @@
     "updated": "2020-05-20T00:00:00.000Z"
   },
   {
-    "id": 8,
+    "id": "8",
     "name": "Nora",
     "email": "Nora@email.com",
     "password": "Nora",
