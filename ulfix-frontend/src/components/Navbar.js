@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // Componentes de Reactstrap
 import {
@@ -24,6 +24,7 @@ function NavbarComp (props) {
   const [navbarColor, setNavbarColor] = useState('navbar-transparent')
   const [collapseOpen, setCollapseOpen] = useState(false)
   const [collapseOut, setCollapseOut] = useState('')
+  const navigate = useNavigate()
 
   useEffect(() => {
     window.addEventListener('scroll', changeColor)
@@ -51,6 +52,11 @@ function NavbarComp (props) {
 
   const onCollapseExited = () => {
     setCollapseOut('')
+  }
+
+  const logout = (e) => {
+    props.setIsAuthenticated(false)
+    navigate('/sign-in')
   }
 
   return (
@@ -158,21 +164,38 @@ function NavbarComp (props) {
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-              <NavItem>
-                <Button
-                  className='nav-link d-none d-lg-block'
-                  color='success'
-                  tag={Link}
-                  to='/sign-in'
-                >
-                  <i className='fas fa-sign-in-alt' />
-                  {
-                    props.lenguage === 'es'
-                      ? <>Iniciar Sesion</>
-                      : <>Log In</>
-                  }
-                </Button>
-              </NavItem>
+              {
+                props.isAuthenticated
+                  ? <NavItem>
+                      <Button
+                        className='nav-link d-none d-lg-block'
+                        color='success'
+                        onClick={(e) => logout(e)}
+                      >
+                        <i className='fas fa-sign-in-alt' />
+                        {
+                          props.lenguage === 'es'
+                            ? <>Cerrar Sesion</>
+                            : <>Log out</>
+                        }
+                      </Button>
+                    </NavItem>
+                  : <NavItem>
+                      <Button
+                        className='nav-link d-none d-lg-block'
+                        color='success'
+                        tag={Link}
+                        to='/sign-in'
+                      >
+                        <i className='fas fa-sign-in-alt' />
+                        {
+                          props.lenguage === 'es'
+                            ? <>Iniciar Sesion</>
+                            : <>Log In</>
+                        }
+                      </Button>
+                    </NavItem>
+              }
             </Nav>
           </Collapse>
         </Container>
