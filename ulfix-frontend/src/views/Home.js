@@ -5,7 +5,12 @@ import Footer from '../components/Footer'
 function Home (props) {
   return (
     <>
-      <NavbarComp lenguage={props.lenguage} changeLenguage={props.changeLenguage} isAuthenticated={props.isAuthenticated} />
+      <NavbarComp
+        lenguage={props.lenguage}
+        changeLenguage={props.changeLenguage}
+        isAuthenticated={props.isAuthenticated}
+        setIsAuthenticated={props.setIsAuthenticated}
+      />
       <div className='wrapper index-page'>
         <PageHeader lenguage={props.lenguage} />
       </div>
