@@ -7,8 +7,8 @@ import SignIn from './views/SignIn.js'
 import SignUp from './views/SignUp.js'
 import UserList from './views/UserList.js'
 
-function App (props) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+function App () {
+  const [isAuthenticated, setIsAuthenticated] = useState(true)
   const [lenguage, setLenguage] = useState('es')
 
   return (
@@ -16,23 +16,55 @@ function App (props) {
       <Routes>
         <Route
           path='/'
-          element={<Home lenguage={lenguage} changeLenguage={(e) => setLenguage(e)} />}
+          element={
+            <Home
+              lenguage={lenguage}
+              changeLenguage={(e) => setLenguage(e)}
+              isAuthenticated={isAuthenticated}
+            />
+          }
         />
         <Route
           path='/profile'
-          element={<Profile lenguage={lenguage} changeLenguage={(e) => setLenguage(e)} />}
+          element={
+            <Profile
+              lenguage={lenguage}
+              changeLenguage={(e) => setLenguage(e)}
+              isAuthenticated={isAuthenticated}
+            />
+          }
         />
         <Route
           path='/sign-in'
-          element={<SignIn lenguage={lenguage} changeLenguage={(e) => setLenguage(e)} />}
+          element={
+            <SignIn
+              lenguage={lenguage}
+              changeLenguage={(e) => setLenguage(e)}
+              isAuthenticated={isAuthenticated}
+              setIsAuthenticated={(e) => setIsAuthenticated(e)}
+            />
+          }
         />
         <Route
           path='/sign-up'
-          element={<SignUp lenguage={lenguage} changeLenguage={(e) => setLenguage(e)} />}
+          element={
+            <SignUp
+              lenguage={lenguage}
+              changeLenguage={(e) => setLenguage(e)}
+              isAuthenticated={isAuthenticated}
+              setIsAuthenticated={(e) => setIsAuthenticated(e)}
+            />
+          }
         />
         <Route
           path='/user-list'
-          element={<UserList lenguage={lenguage} changeLenguage={(e) => setLenguage(e)} />}
+          element={
+            <UserList
+              lenguage={lenguage}
+              changeLenguage={(e) => setLenguage(e)}
+              isAuthenticated={isAuthenticated}
+            />
+          }
         />
       </Routes>
     </BrowserRouter>
