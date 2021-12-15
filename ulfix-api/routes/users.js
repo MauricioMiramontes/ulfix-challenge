@@ -1,91 +1,101 @@
-var express = require('express');
-var router = express.Router();
-var users = require('../mock_data/user_data.json');
+const express = require('express')
+const router = express.Router()
+const users = require('../mock_data/user_data.json')
+const fs = require('fs') // file system
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-  res.send(Object.values(users));
-});
+  res.send(Object.values(users))
+})
 
 router.get('/:userId', function (req, res, next) {
-  const user = users.find(user => user.id == req.params.userId)
+  const user = users.find(user => user.id === req.params.userId)
 
   // Verify if user exists
-  if(user === undefined) {
-    res.status(404).send('User not found');
-    return;
+  if (user === undefined) {
+    res.status(404).send('User not found')
+    return
   }
-  
-  res.send(user);
-});
+
+  res.send(user)
+})
 
 router.post('/', (req, res) => {
-
-  const lastUserId = users[users.length - 1].id;
+  const lastUserId = users[users.length - 1].id
 
   // Verify if user exists
   for (let i = 0; i < users.length; i++) {
     if (users[i].email === req.body.email) {
-      res.status(400).send('User already exists');
-      return; // stop the function
+      res.status(400).send('User already exists')
+      return // stop the function
     }
   }
 
-  //Create new user
+  // Create new user
   const newUser = {
-    id: lastUserId + 1,
+    id: (lastUserId + 1).toString(),
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
     created: new Date(),
-    updated: new Date(),
-  };
+    updated: new Date()
+  }
 
-  users.push(newUser);
-  res.send(newUser);
-});
+  users.push(newUser)
+  fs.writeFile('./mock_data/user_data.json', JSON.stringify(users),
+    function (err, result) {
+      if (err) console.log('error', err)
+    })
+  res.send(newUser)
+})
 
 router.put('/:userId', (req, res) => {
-
-  const user = users.find(user => user.id == req.params.userId)
-  const index = users.indexOf(user);
+  const user = users.find(user => user.id === req.params.userId)
+  const index = users.indexOf(user)
 
   // Verify if user exists
-  if(user === undefined) {
-    res.status(404).send('User not found');
-    return;
+  if (user === undefined) {
+    res.status(404).send('User not found')
+    return
   }
 
-  //Create updated user
+  // Create updated user
   const updatedUser = {
     id: user.id,
-    name: req.body.name !== undefined ?  req.body.name : user.name  ,
-    email: req.body.email !== undefined ?  req.body.email : user.email, 
-    password: req.body.password !== undefined ?  req.body.password : user.password,
+    name: req.body.name !== undefined ? req.body.name : user.name,
+    email: req.body.email !== undefined ? req.body.email : user.email,
+    password: req.body.password !== undefined ? req.body.password : user.password,
     created: user.created,
-    updated: new Date(),
-  };
-
-  users.splice(index, 1, updatedUser);
-  res.send(users[index]);
-});
-
-router.delete('/:userId', (req, res) => {
-  const user = users.find(user => user.id == req.params.userId)
-  const index = users.indexOf(user);
-
-  // Verify if user exists
-  if(user === undefined) {
-    res.status(404).send('User not found');
-    return;
+    updated: new Date()
   }
 
+  users.splice(index, 1, updatedUser)
+  fs.writeFile('./mock_data/user_data.json', JSON.stringify(users),
+    function (err, result) {
+      if (err) console.log('error', err)
+    })
+  res.send(users[index])
+})
 
-  users.splice(index, 1);
+router.delete('/:userId', (req, res) => {
+  const user = users.find(user => user.id === req.params.userId)
+  const index = users.indexOf(user)
+
+  // Verify if user exists
+  if (user === undefined) {
+    res.status(404).send('User not found')
+    return
+  }
+
+  users.splice(index, 1)
+  fs.writeFile('./mock_data/user_data.json', JSON.stringify(users),
+    function (err, result) {
+      if (err) console.log('error', err)
+    })
 
   res.status(200).send(
-    `Deleted user with id: ${req.params.userId}`,
-  );
-});
+    `Deleted user with id: ${req.params.userId}`
+  )
+})
 
-module.exports = router;
+module.exports = router
