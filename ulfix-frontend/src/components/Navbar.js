@@ -34,7 +34,7 @@ function NavbarComp (props) {
 
   const changeColor = () => {
     if (document.documentElement.scrollTop > 99 || document.body.scrollTop > 99) {
-      setNavbarColor('bg-info')
+      setNavbarColor('bg-default')
     } else if (document.documentElement.scrollTop < 100 || document.body.scrollTop < 100) {
       setNavbarColor('navbar-transparent')
     }
@@ -86,7 +86,7 @@ function NavbarComp (props) {
             <div className='navbar-collapse-header'>
               <Row>
                 <Col className='collapse-brand' xs='6'>
-                  <a href='/inicio' onClick={(e) => e.preventDefault()}>
+                  <a href='/' onClick={(e) => e.preventDefault()}>
                     Ulfix Challenge
                   </a>
                 </Col>
@@ -110,14 +110,19 @@ function NavbarComp (props) {
                   {props.lenguage === 'es' ? <p>Lista Usuarios</p> : <p>User List</p>}
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink
-                  tag={Link}
-                  to='/profile'
-                >
-                  {props.lenguage === 'es' ? <p>My Perfil</p> : <p>My Profile</p>}
-                </NavLink>
-              </NavItem>
+              {
+                props.isAuthenticated
+                  ? <NavItem>
+                      <NavLink
+                        tag={Link}
+                        to='/profile'
+                      >
+                        {props.lenguage === 'es' ? <p>My Perfil</p> : <p>My Profile</p>}
+                      </NavLink>
+                    </NavItem>
+                  : <> </>
+              }
+
               <UncontrolledDropdown nav>
                 <DropdownToggle
                   caret
