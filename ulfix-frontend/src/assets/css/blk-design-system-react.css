@@ -10778,7 +10778,7 @@ img {
   text-transform: uppercase;
   color: #ffffff; }
   .modal.modal-mini .modal-footer button:first-child {
-    opacity: .5; }
+    opacity: 1; }
 
 .modal.modal-black .modal-content {
   background: #1f2251;
