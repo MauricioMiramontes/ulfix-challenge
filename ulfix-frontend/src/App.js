@@ -14,7 +14,10 @@ function App (props) {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Home lenguage={lenguage} changeLenguage={(e) => setLenguage(e)} />} />
+        <Route
+          path='/'
+          element={<Home lenguage={lenguage} changeLenguage={(e) => setLenguage(e)} />}
+        />
         <Route
           path='/profile'
           element={<Profile lenguage={lenguage} changeLenguage={(e) => setLenguage(e)} />}
