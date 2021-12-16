@@ -30,7 +30,7 @@ function SignUp (props) {
   const [passwordFocus, setPasswordFocus] = useState(false)
 
   // Estado inicial del formulario
-  const [formData, setFormData] = useState({ email: '', password: '' })
+  const [formData, setFormData] = useState({ email: '', password: '', name: '' })
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -55,10 +55,23 @@ function SignUp (props) {
     )
   }
 
-  const login = (e) => {
-    props.setIsAuthenticated(true)
-    console.log(formData)
-    navigate('/')
+  const signup = (e) => {
+    fetch('http://localhost:3001/users/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(response => response.json())
+      .then(userData => {
+        props.setAuthToken(userData.accessToken)
+        props.setUserData(userData.user)
+        props.setIsAuthenticated(true)
+        console.log(userData)
+        navigate('/')
+      })
+      .catch(error => console.log(error))
   }
 
   const handleChange = (e) => {
@@ -153,7 +166,7 @@ function SignUp (props) {
                         className='btn-round'
                         color='primary'
                         size='lg'
-                        onClick={(e) => login(e)}
+                        onClick={(e) => signup(e)}
                       >
                         {props.lenguage === 'es' ? <>Crear cuenta</> : <>Sign Up</>}
                       </Button>
