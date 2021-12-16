@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import classnames from 'classnames'
 
 // reactstrap components
 import {
@@ -10,7 +11,13 @@ import {
   Container,
   Row,
   Col,
-  UncontrolledTooltip
+  UncontrolledTooltip,
+  TabContent,
+  TabPane,
+  Table,
+  Nav,
+  NavItem,
+  NavLink
 } from 'reactstrap'
 
 import NavbarComp from '../components/Navbar.js'
@@ -20,6 +27,7 @@ import DeleteModal from '../components/DeleteUserModal.js'
 function Profile (props) {
   const [user, setUser] = useState({})
   const [deleteModal, setDeleteModal] = useState(false)
+  const [tabs, setTabs] = useState(1)
   const navigate = useNavigate()
 
   // API Call - Get User
@@ -35,14 +43,6 @@ function Profile (props) {
       .then(dataUser => setUser(dataUser))
       .catch(error => console.log(error))
   }, [])
-
-  // Da formato a la fecha antes de mostrarla
-  const formatDate = (date) => {
-    const objDate = new Date(date)
-    const formatedDate = objDate.toLocaleString('es-MX', { timezone: 'GMT-5', hour12: true, timeStyle: 'short', dateStyle: 'medium' })
-
-    return formatedDate
-  }
 
   const deleteUser = () => {
     // Se hace la llamada a la API para recolectar los datos de usurios
@@ -90,7 +90,7 @@ function Profile (props) {
           <section className='section section-coins'>
             <Container className='align-items-center'>
               <Row>
-                <Col lg='6' md='6'>
+                <Col lg='8' md='6'>
                   <h1 className='profile-title text-left'>{user.name}</h1>
                   <p className='profile-description'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -103,10 +103,6 @@ function Profile (props) {
                     Proin at nunc a leo tempor vulputate et sit amet elit. Nulla ac porta lectus.
                     Fusce condimentum erat mauris, ut lobortis lacus rhoncus in.
                     Pellentesque erat nisl, congue non euismod ut, eleifend a mi.
-                    Nam condimentum est sit amet velit tincidunt interdum. Aliquam erat volutpat.
-                    Vestibulum interdum, tellus ut dapibus condimentum, metus quam sodales quam, at auctor urna risus sed metus.
-                    Duis aliquam risus a faucibus posuere. Cras molestie convallis nulla sed accumsan.
-                    Nullam a nunc eget justo consequat luctus quis at enim.
                   </p>
                   <div className='btn-wrapper profile pt-3'>
                     <Button
@@ -137,55 +133,113 @@ function Profile (props) {
                 </Col>
                 <Col className='ml-auto mr-auto' lg='4' md='6'>
                   <Card className='card-coin card-plain'>
-                    <CardHeader className='justify-content-center'>
+                    <CardHeader>
                       <img
                         alt='...'
                         className='img-center img-fluid rounded-circle'
                         src={require('../assets/img/mike.jpg')}
                       />
-                      <h2 className='title ml-3'>{user.name}</h2>
+                      <h3 className='title'>{user.name}</h3>
                     </CardHeader>
                     <CardBody>
-                      <Row className='ml-4'>
-                        <h5 className='title ml-5'>Email: {user.email}</h5>
-                        <h5 className='title'>
-                          {
-                            props.lenguage === 'es'
-                              ? <>Ultima Actualizacion: </>
-                              : <>Last Update: </>
-                          }
-                          {formatDate(user.updated)}
-                        </h5>
-                      </Row>
-                      <Row className='ml-2'>
-                        <Col md='6' sm='6'>
-                          <Button
-                            color='danger'
-                            onClick={() => setDeleteModal(!deleteModal)}
+                      <Nav
+                        className='nav-tabs-primary justify-content-center'
+                        tabs
+                      >
+                        <NavItem>
+                          <NavLink
+                            className={classnames({
+                              active: tabs === 1
+                            })}
+                            onClick={(e) => {
+                              e.preventDefault()
+                              setTabs(1)
+                            }}
+                            href='#pablo'
                           >
-                            {
-                              props.lenguage === 'es'
-                                ? <>Eliminar</>
-                                : <>Delete</>
-                            }
-                          </Button>
-                        </Col>
-                        <Col md='6' sm='6'>
-                          <Button
-                            color='warning'
-                            onClick={() => navigate('/edit-user')}
+                            {props.lenguage === 'es' ? 'Tecnologías' : 'Tecnologies'}
+                          </NavLink>
+                        </NavItem>
+                        <NavItem>
+                          <NavLink
+                            className={classnames({
+                              active: tabs === 2
+                            })}
+                            onClick={(e) => {
+                              e.preventDefault()
+                              setTabs(2)
+                            }}
+                            href='#pablo'
                           >
-                            {
-                              props.lenguage === 'es'
-                                ? <>Editar</>
-                                : <>Edit</>
-                            }
-                          </Button>
-                        </Col>
-                      </Row>
-
+                            {props.lenguage === 'es' ? 'Contacto' : 'Contact'}
+                          </NavLink>
+                        </NavItem>
+                      </Nav>
+                      <TabContent
+                        className='tab-subcategories'
+                        activeTab={'tab' + tabs}
+                      >
+                        <TabPane tabId='tab1'>
+                          <Table className='tablesorter'>
+                            <tbody>
+                              <tr>
+                                <td style={{ textAlign: 'center' }}>
+                                  <i className='fab fa-react' />{' '}React
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style={{ textAlign: 'center' }}>
+                                  <i className='fas fa-server' />{' '}Express
+                                </td>
+                              </tr>
+                            </tbody>
+                          </Table>
+                        </TabPane>
+                        <TabPane tabId='tab2'>
+                          <Table className='tablesorter'>
+                            <tbody>
+                              <tr>
+                                <td style={{ textAlign: 'center' }}>
+                                  <i class='fas fa-envelope' />{' ' + user.email}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style={{ textAlign: 'center' }}>
+                                  <i class='fas fa-phone' />{' '}555555555
+                                </td>
+                              </tr>
+                            </tbody>
+                          </Table>
+                        </TabPane>
+                      </TabContent>
                     </CardBody>
                   </Card>
+                </Col>
+              </Row>
+              <Row>
+                <Col md={{ size: '2', offset: '8' }} sm='2'>
+                  <Button
+                    color='danger'
+                    onClick={() => setDeleteModal(!deleteModal)}
+                  >
+                    {
+                      props.lenguage === 'es'
+                        ? <>Eliminar</>
+                        : <>Delete</>
+                    }
+                  </Button>
+                </Col>
+                <Col md='2' sm='2'>
+                  <Button
+                    color='warning'
+                    onClick={() => navigate('/edit-user')}
+                  >
+                    {
+                      props.lenguage === 'es'
+                        ? <>Editar</>
+                        : <>Edit</>
+                    }
+                  </Button>
                 </Col>
               </Row>
             </Container>

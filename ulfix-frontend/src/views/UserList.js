@@ -47,7 +47,7 @@ function UserList (props) {
             <Row>
               <h1>
                 {props.lenguage === 'es' ? <>Lista de usuarios</> : <>User List</>}<br />
-                <hr className='line-info' />
+                <hr className='line-primary' />
               </h1>
             </Row>
             <Row>
