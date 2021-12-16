@@ -51,7 +51,7 @@ router.get('/:userId', authenticateToken, function (req, res, next) {
   res.send(user)
 })
 
-/* POST new user */
+/* POST new user name, email and password are required fields */
 router.post('/', (req, res) => {
   // Check for required fields
   if (!req.body.email || !req.body.password || !req.body.name) {
