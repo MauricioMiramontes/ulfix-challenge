@@ -10,6 +10,7 @@ function Home (props) {
         changeLenguage={props.changeLenguage}
         isAuthenticated={props.isAuthenticated}
         setIsAuthenticated={props.setIsAuthenticated}
+        active='home'
       />
       <div className='wrapper index-page'>
         <PageHeader lenguage={props.lenguage} />

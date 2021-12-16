@@ -30,6 +30,7 @@ function UserList (props) {
         changeLenguage={props.changeLenguage}
         isAuthenticated={props.isAuthenticated}
         setIsAuthenticated={props.setIsAuthenticated}
+        active='user-list'
       />
       <div className='wrapper index-page'>
         <img

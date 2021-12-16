@@ -32,7 +32,10 @@ function Profile (props) {
 
   // API Call - Get User
   useEffect(() => {
-    // Se hace la llamada a la API para recolectar los datos de usurios
+    if (!props.isAuthenticated) {
+      navigate('/sign-in')
+    }
+
     fetch(`http://localhost:3001/users/${props.userData.id}`, {
       headers: {
         'Content-Type': 'application/json',
@@ -45,7 +48,6 @@ function Profile (props) {
   }, [])
 
   const deleteUser = () => {
-    // Se hace la llamada a la API para recolectar los datos de usurios
     fetch(`http://localhost:3001/users/${props.userData.id}`, {
       method: 'DELETE',
       headers: {
@@ -68,6 +70,7 @@ function Profile (props) {
         changeLenguage={props.changeLenguage}
         isAuthenticated={props.isAuthenticated}
         setIsAuthenticated={props.setIsAuthenticated}
+        active='profile'
       />
       <DeleteModal
         deleteModal={deleteModal}
@@ -200,12 +203,12 @@ function Profile (props) {
                             <tbody>
                               <tr>
                                 <td style={{ textAlign: 'center' }}>
-                                  <i class='fas fa-envelope' />{' ' + user.email}
+                                  <i className='fas fa-envelope' />{' ' + user.email}
                                 </td>
                               </tr>
                               <tr>
                                 <td style={{ textAlign: 'center' }}>
-                                  <i class='fas fa-phone' />{' '}555555555
+                                  <i className='fas fa-phone' />{' '}555555555
                                 </td>
                               </tr>
                             </tbody>

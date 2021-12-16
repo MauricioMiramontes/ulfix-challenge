@@ -67,6 +67,7 @@ function NavbarComp (props) {
             <NavbarBrand to='/' id='navbar-brand' tag={Link}>
               <span>Ulfix </span>
               Challenge
+              {props.active === 'home' ? <hr style={{ 'margin-top': '1px' }} className='line-primary' /> : <></>}
             </NavbarBrand>
             <UncontrolledTooltip placement='bottom' target='navbar-brand'>
               By Mauricio Miramontes
@@ -115,6 +116,7 @@ function NavbarComp (props) {
                 >
                   {props.lenguage === 'es' ? <p>Lista Usuarios</p> : <p>User List</p>}
                 </NavLink>
+                {props.active === 'user-list' ? <hr style={{ 'margin-top': '1px' }} className='line-primary' /> : <></>}
               </NavItem>
               {
                 props.isAuthenticated
@@ -125,6 +127,7 @@ function NavbarComp (props) {
                       >
                         {props.lenguage === 'es' ? <p>My Perfil</p> : <p>My Profile</p>}
                       </NavLink>
+                      {props.active === 'profile' ? <hr style={{ 'margin-top': '1px' }} className='line-primary' /> : <></>}
                     </NavItem>
                   : <> </>
               }
