@@ -1,19 +1,46 @@
 const express = require('express')
 const router = express.Router()
 const users = require('../mock_data/user_data.json')
+const jwt = require('jsonwebtoken')
 const fs = require('fs') // file system
+
+const TOKEN_SECRET = 'spooky secret'
+
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers.authorization
+  const token = authHeader && authHeader.split(' ')[1]
+
+  if (token == null) return res.sendStatus(401)
+
+  jwt.verify(token, TOKEN_SECRET, (err, user) => {
+    if (err) {
+      console.log(err)
+      return res.sendStatus(403)
+    }
+
+    req.user = user
+
+    next()
+  })
+}
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   res.send(Object.values(users))
 })
 
-router.get('/:userId', function (req, res, next) {
+router.get('/:userId', authenticateToken, function (req, res, next) {
   const user = users.find(user => user.id === req.params.userId)
 
   // Verify if user exists
   if (user === undefined) {
     res.status(404).send('User not found')
+    return
+  }
+
+  // Verify if user is authenticated
+  if (req.user.id !== user.id) {
+    res.status(403).send('Forbidden')
     return
   }
 
@@ -48,13 +75,19 @@ router.post('/', (req, res) => {
   res.send(newUser)
 })
 
-router.put('/:userId', (req, res) => {
+router.put('/:userId', authenticateToken, (req, res) => {
   const user = users.find(user => user.id === req.params.userId)
   const index = users.indexOf(user)
 
   // Verify if user exists
   if (user === undefined) {
     res.status(404).send('User not found')
+    return
+  }
+
+  // Verify if user is authenticated
+  if (req.user.id !== user.id) {
+    res.status(403).send('Forbidden')
     return
   }
 
@@ -69,14 +102,16 @@ router.put('/:userId', (req, res) => {
   }
 
   users.splice(index, 1, updatedUser)
+
   fs.writeFile('./mock_data/user_data.json', JSON.stringify(users),
     function (err, result) {
       if (err) console.log('error', err)
     })
+
   res.send(users[index])
 })
 
-router.delete('/:userId', (req, res) => {
+router.delete('/:userId', authenticateToken, (req, res) => {
   const user = users.find(user => user.id === req.params.userId)
   const index = users.indexOf(user)
 
@@ -86,7 +121,14 @@ router.delete('/:userId', (req, res) => {
     return
   }
 
+  // Verify if user is authenticated
+  if (req.user.id !== user.id) {
+    res.status(403).send('Forbidden')
+    return
+  }
+
   users.splice(index, 1)
+
   fs.writeFile('./mock_data/user_data.json', JSON.stringify(users),
     function (err, result) {
       if (err) console.log('error', err)
