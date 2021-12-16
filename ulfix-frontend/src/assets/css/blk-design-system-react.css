@@ -13100,15 +13100,15 @@ textarea.form-control {
     height: 200px;
     width: 200px;
     background-image: url("../img/square5.png");
-    left: -100px;
-    top: 100px;
+    left: 15px;
+    top: 260px;
     opacity: .4; }
   .register-page .square-8 {
     height: 100px;
     width: 100px;
     background-image: url("../img/square1.png");
-    left: 300px;
-    top: 400px;
+    left: 350px;
+    top: 570px;
     opacity: .4; }
 
 .index-page,
