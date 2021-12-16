@@ -84,7 +84,8 @@ router.post('/', (req, res) => {
       accessToken,
       user: {
         email: newUser.email,
-        id: newUser.id
+        id: newUser.id,
+        name: newUser.name
       }
     }
   )

@@ -22,7 +22,8 @@ router.post('/signin', (req, res) => {
         accessToken,
         user: {
           email: user.email,
-          id: user.id
+          id: user.id,
+          name: user.name
         }
       }
     )
@@ -35,7 +36,8 @@ router.post('/signin', (req, res) => {
         accessToken,
         user: {
           email: 'test@user.com',
-          id: '1'
+          id: '1',
+          name: 'Test User'
         }
       }
     )
