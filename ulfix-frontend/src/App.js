@@ -9,6 +9,8 @@ import UserList from './views/UserList.js'
 
 function App () {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [authToken, setAuthToken] = useState('')
+  const [userData, setUserData] = useState({})
   const [lenguage, setLenguage] = useState('es')
 
   return (
@@ -44,6 +46,8 @@ function App () {
               changeLenguage={(e) => setLenguage(e)}
               isAuthenticated={isAuthenticated}
               setIsAuthenticated={(e) => setIsAuthenticated(e)}
+              setAuthToken={(e) => setAuthToken(e)}
+              setUserData={(e) => setUserData(e)}
             />
           }
         />
@@ -55,6 +59,8 @@ function App () {
               changeLenguage={(e) => setLenguage(e)}
               isAuthenticated={isAuthenticated}
               setIsAuthenticated={(e) => setIsAuthenticated(e)}
+              setAuthToken={(e) => setAuthToken(e)}
+              setUserData={(e) => setUserData(e)}
             />
           }
         />

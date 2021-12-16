@@ -57,8 +57,17 @@ function SignIn (props) {
   }
 
   const login = (e) => {
-    props.setIsAuthenticated(true)
-    console.log(formData)
+    fetch('http://localhost:3001/auth/signin', {
+      method: 'POST',
+      body: JSON.stringify(formData)
+    })
+      .then(response => response.json())
+      .then(userData => {
+        props.setAuthToken(userData.accessToken)
+        props.setUserData(userData.user)
+        props.setIsAuthenticated(true)
+        console.log(userData)
+      })
     navigate('/')
   }
 
