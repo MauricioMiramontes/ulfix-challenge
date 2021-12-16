@@ -67,7 +67,7 @@ function NavbarComp (props) {
             <NavbarBrand to='/' id='navbar-brand' tag={Link}>
               <span>Ulfix </span>
               Challenge
-              {props.active === 'home' ? <hr style={{ 'margin-top': '1px' }} className='line-primary' /> : <></>}
+              {props.active === 'home' ? <hr style={{ 'marginTop': '1px' }} className='line-primary' /> : <></>}
             </NavbarBrand>
             <UncontrolledTooltip placement='bottom' target='navbar-brand'>
               By Mauricio Miramontes
@@ -114,9 +114,9 @@ function NavbarComp (props) {
                   tag={Link}
                   to='/user-list'
                 >
-                  {props.lenguage === 'es' ? <p>Lista Usuarios</p> : <p>User List</p>}
+                  {props.Language === 'es' ? <p>Lista Usuarios</p> : <p>User List</p>}
                 </NavLink>
-                {props.active === 'user-list' ? <hr style={{ 'margin-top': '1px' }} className='line-primary' /> : <></>}
+                {props.active === 'user-list' ? <hr style={{ 'marginTop': '1px' }} className='line-primary' /> : <></>}
               </NavItem>
               {
                 props.isAuthenticated
@@ -125,9 +125,9 @@ function NavbarComp (props) {
                         tag={Link}
                         to='/profile'
                       >
-                        {props.lenguage === 'es' ? <p>My Perfil</p> : <p>My Profile</p>}
+                        {props.Language === 'es' ? <p>Mi Perfil</p> : <p>My Profile</p>}
                       </NavLink>
-                      {props.active === 'profile' ? <hr style={{ 'margin-top': '1px' }} className='line-primary' /> : <></>}
+                      {props.active === 'profile' ? <hr style={{ 'marginTop': '1px' }} className='line-primary' /> : <></>}
                     </NavItem>
                   : <> </>
               }
@@ -142,7 +142,7 @@ function NavbarComp (props) {
                   onClick={(e) => e.preventDefault()}
                 >
                   <i className='fas fa-globe' />
-                  {props.lenguage}
+                  {props.Language}
                 </DropdownToggle>
                 <DropdownMenu className='dropdown-with-icons'>
                   <DropdownItem
@@ -150,7 +150,7 @@ function NavbarComp (props) {
                     to=''
                     onClick={(e) => {
                       e.preventDefault()
-                      props.changeLenguage('en')
+                      props.changeLanguage('en')
                     }}
                   >
                     English
@@ -160,7 +160,7 @@ function NavbarComp (props) {
                     to=''
                     onClick={(e) => {
                       e.preventDefault()
-                      props.changeLenguage('es')
+                      props.changeLanguage('es')
                     }}
                   >
                     Español
@@ -177,7 +177,7 @@ function NavbarComp (props) {
                       >
                         <i className='fas fa-sign-in-alt' />
                         {
-                          props.lenguage === 'es'
+                          props.Language === 'es'
                             ? <>Cerrar Sesion</>
                             : <>Log out</>
                         }
@@ -192,7 +192,7 @@ function NavbarComp (props) {
                       >
                         <i className='fas fa-sign-in-alt' />
                         {
-                          props.lenguage === 'es'
+                          props.Language === 'es'
                             ? <>Iniciar Sesion</>
                             : <>Log In</>
                         }

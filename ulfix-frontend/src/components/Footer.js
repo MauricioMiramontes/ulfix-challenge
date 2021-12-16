@@ -25,19 +25,19 @@ function Footer (props) {
             <Nav>
               <NavItem>
                 <NavLink to='/' tag={Link}>
-                  {props.lenguage === 'es' ? <>Lista de Usuarios</> : <>User List</>}
+                  {props.Language === 'es' ? <>Lista de Usuarios</> : <>User List</>}
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink to='/' tag={Link}>
-                  {props.lenguage === 'es' ? <>Contacto</> : <>Contact</>}
+                  {props.Language === 'es' ? <>Contacto</> : <>Contact</>}
                 </NavLink>
               </NavItem>
             </Nav>
           </Col>
           <Col md='5'>
             {
-              props.lenguage === 'es'
+              props.Language === 'es'
                 ? <>
                     <h4 className='title'>Estilos y diseño creados por Creative Tim</h4>
                     <h5 className='title'>Contacto Creative Tim:</h5>

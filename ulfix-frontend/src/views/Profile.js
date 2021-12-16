@@ -66,8 +66,8 @@ function Profile (props) {
   return (
     <>
       <NavbarComp
-        lenguage={props.lenguage}
-        changeLenguage={props.changeLenguage}
+        Language={props.Language}
+        changeLanguage={props.changeLanguage}
         isAuthenticated={props.isAuthenticated}
         setIsAuthenticated={props.setIsAuthenticated}
         active='profile'
@@ -76,7 +76,7 @@ function Profile (props) {
         deleteModal={deleteModal}
         setDeleteModal={(e) => setDeleteModal(e)}
         deleteUser={() => deleteUser()}
-        lenguage={props.lenguage}
+        Language={props.Language}
       />
       <div className='wrapper index-page'>
         <div className='page-header'>
@@ -160,7 +160,7 @@ function Profile (props) {
                             }}
                             href='#pablo'
                           >
-                            {props.lenguage === 'es' ? 'Tecnologías' : 'Tecnologies'}
+                            {props.Language === 'es' ? 'Tecnologías' : 'Tecnologies'}
                           </NavLink>
                         </NavItem>
                         <NavItem>
@@ -174,7 +174,7 @@ function Profile (props) {
                             }}
                             href='#pablo'
                           >
-                            {props.lenguage === 'es' ? 'Contacto' : 'Contact'}
+                            {props.Language === 'es' ? 'Contacto' : 'Contact'}
                           </NavLink>
                         </NavItem>
                       </Nav>
@@ -226,7 +226,7 @@ function Profile (props) {
                     onClick={() => setDeleteModal(!deleteModal)}
                   >
                     {
-                      props.lenguage === 'es'
+                      props.Language === 'es'
                         ? <>Eliminar</>
                         : <>Delete</>
                     }
@@ -238,7 +238,7 @@ function Profile (props) {
                     onClick={() => navigate('/edit-user')}
                   >
                     {
-                      props.lenguage === 'es'
+                      props.Language === 'es'
                         ? <>Editar</>
                         : <>Edit</>
                     }
@@ -248,7 +248,7 @@ function Profile (props) {
             </Container>
           </section>
         </div>
-        <Footer lenguage={props.lenguage} />
+        <Footer Language={props.Language} />
       </div>
     </>
   )

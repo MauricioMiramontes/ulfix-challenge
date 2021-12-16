@@ -6,16 +6,16 @@ function Home (props) {
   return (
     <>
       <NavbarComp
-        lenguage={props.lenguage}
-        changeLenguage={props.changeLenguage}
+        Language={props.Language}
+        changeLanguage={props.changeLanguage}
         isAuthenticated={props.isAuthenticated}
         setIsAuthenticated={props.setIsAuthenticated}
         active='home'
       />
       <div className='wrapper index-page'>
-        <PageHeader lenguage={props.lenguage} />
+        <PageHeader Language={props.Language} />
       </div>
-      <Footer lenguage={props.lenguage} />
+      <Footer Language={props.Language} />
     </>
   )
 }

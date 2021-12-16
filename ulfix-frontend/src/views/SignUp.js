@@ -62,8 +62,8 @@ function SignUp (props) {
   return (
     <>
       <NavbarComp
-        lenguage={props.lenguage}
-        changeLenguage={props.changeLenguage}
+        Language={props.Language}
+        changeLanguage={props.changeLanguage}
         isAuthenticated={props.isAuthenticated}
         setIsAuthenticated={props.setIsAuthenticated}
       />
@@ -136,7 +136,7 @@ function SignUp (props) {
                         size='lg'
                         onClick={(e) => signup(e)}
                       >
-                        {props.lenguage === 'es' ? <>Crear cuenta</> : <>Sign Up</>}
+                        {props.Language === 'es' ? <>Crear cuenta</> : <>Sign Up</>}
                       </Button>
                     </CardFooter>
                   </Card>
@@ -147,7 +147,7 @@ function SignUp (props) {
             </Container>
           </div>
         </div>
-        <Footer lenguage={props.lenguage} />
+        <Footer Language={props.Language} />
       </div>
     </>
   )

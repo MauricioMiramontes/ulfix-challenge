@@ -12,7 +12,7 @@ function App () {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [authToken, setAuthToken] = useState('')
   const [userData, setUserData] = useState({})
-  const [lenguage, setLenguage] = useState('es')
+  const [Language, setLanguage] = useState('es')
 
   return (
     <BrowserRouter>
@@ -21,8 +21,8 @@ function App () {
           path='/'
           element={
             <Home
-              lenguage={lenguage}
-              changeLenguage={(e) => setLenguage(e)}
+              Language={Language}
+              changeLanguage={(e) => setLanguage(e)}
               isAuthenticated={isAuthenticated}
               setIsAuthenticated={(e) => setIsAuthenticated(e)}
             />
@@ -32,8 +32,8 @@ function App () {
           path='/profile'
           element={
             <Profile
-              lenguage={lenguage}
-              changeLenguage={(e) => setLenguage(e)}
+              Language={Language}
+              changeLanguage={(e) => setLanguage(e)}
               isAuthenticated={isAuthenticated}
               setIsAuthenticated={(e) => setIsAuthenticated(e)}
               userData={userData}
@@ -45,8 +45,8 @@ function App () {
           path='/sign-in'
           element={
             <SignIn
-              lenguage={lenguage}
-              changeLenguage={(e) => setLenguage(e)}
+              Language={Language}
+              changeLanguage={(e) => setLanguage(e)}
               isAuthenticated={isAuthenticated}
               setIsAuthenticated={(e) => setIsAuthenticated(e)}
               setAuthToken={(e) => setAuthToken(e)}
@@ -58,8 +58,8 @@ function App () {
           path='/sign-up'
           element={
             <SignUp
-              lenguage={lenguage}
-              changeLenguage={(e) => setLenguage(e)}
+              Language={Language}
+              changeLanguage={(e) => setLanguage(e)}
               isAuthenticated={isAuthenticated}
               setIsAuthenticated={(e) => setIsAuthenticated(e)}
               setAuthToken={(e) => setAuthToken(e)}
@@ -71,8 +71,8 @@ function App () {
           path='/user-list'
           element={
             <UserList
-              lenguage={lenguage}
-              changeLenguage={(e) => setLenguage(e)}
+              Language={Language}
+              changeLanguage={(e) => setLanguage(e)}
               isAuthenticated={isAuthenticated}
               setIsAuthenticated={(e) => setIsAuthenticated(e)}
             />
@@ -82,8 +82,8 @@ function App () {
           path='/edit-user'
           element={
             <EditUser
-              lenguage={lenguage}
-              changeLenguage={(e) => setLenguage(e)}
+              Language={Language}
+              changeLanguage={(e) => setLanguage(e)}
               isAuthenticated={isAuthenticated}
               setIsAuthenticated={(e) => setIsAuthenticated(e)}
               userData={userData}

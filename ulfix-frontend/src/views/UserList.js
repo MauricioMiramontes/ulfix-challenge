@@ -26,8 +26,8 @@ function UserList (props) {
   return (
     <>
       <NavbarComp
-        lenguage={props.lenguage}
-        changeLenguage={props.changeLenguage}
+        Language={props.Language}
+        changeLanguage={props.changeLanguage}
         isAuthenticated={props.isAuthenticated}
         setIsAuthenticated={props.setIsAuthenticated}
         active='user-list'
@@ -47,17 +47,17 @@ function UserList (props) {
           <Container>
             <Row>
               <h1>
-                {props.lenguage === 'es' ? <>Lista de usuarios</> : <>User List</>}<br />
+                {props.Language === 'es' ? <>Lista de usuarios</> : <>User List</>}<br />
                 <hr className='line-primary' />
               </h1>
             </Row>
             <Row>
-              <UserTable users={users} lenguage={props.lenguage} />
+              <UserTable users={users} Language={props.Language} />
             </Row>
           </Container>
         </section>
       </div>
-      <Footer lenguage={props.lenguage} />
+      <Footer Language={props.Language} />
     </>
   )
 }

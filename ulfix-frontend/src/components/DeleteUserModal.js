@@ -19,7 +19,7 @@ function DeleteModal (props) {
       <div className='modal-body'>
         <p>
           {
-            props.lenguage === 'es'
+            props.Language === 'es'
               ? <>¿Estas seguro que deseas eliminar la cuenta?</>
               : <>Are you sure you want to delete the account?</>
           }
@@ -30,7 +30,7 @@ function DeleteModal (props) {
           color='danger'
           onClick={() => props.deleteUser()}
         >
-          {props.lenguage === 'es' ? <>Eliminar</> : <>Delete</>}
+          {props.Language === 'es' ? <>Eliminar</> : <>Delete</>}
         </Button>
       </div>
     </Modal>

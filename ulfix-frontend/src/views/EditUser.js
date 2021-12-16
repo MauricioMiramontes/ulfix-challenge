@@ -62,8 +62,8 @@ function EditUser (props) {
   return (
     <>
       <NavbarComp
-        lenguage={props.lenguage}
-        changeLenguage={props.changeLenguage}
+        Language={props.Language}
+        changeLanguage={props.changeLanguage}
         isAuthenticated={props.isAuthenticated}
         setIsAuthenticated={props.setIsAuthenticated}
       />
@@ -80,7 +80,7 @@ function EditUser (props) {
                         src={require('../assets/img/square-purple-1.png')}
                       />
                       <CardTitle tag='h4'>
-                        {props.lenguage === 'es' ? <>Editar</> : <>edit</>}
+                        {props.Language === 'es' ? <>Editar</> : <>edit</>}
                       </CardTitle>
                     </CardHeader>
                     <CardBody>
@@ -136,7 +136,7 @@ function EditUser (props) {
                         size='lg'
                         onClick={(e) => editUser(e)}
                       >
-                        {props.lenguage === 'es' ? <>Actualizar Informacion</> : <>Update Info</>}
+                        {props.Language === 'es' ? <>Actualizar Informacion</> : <>Update Info</>}
                       </Button>
                     </CardFooter>
                   </Card>
@@ -145,7 +145,7 @@ function EditUser (props) {
             </Container>
           </div>
         </div>
-        <Footer lenguage={props.lenguage} />
+        <Footer Language={props.Language} />
       </div>
     </>
   )

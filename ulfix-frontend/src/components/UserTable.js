@@ -6,9 +6,9 @@ function UserTable (props) {
       <Table className='tablesorter' responsive>
         <thead className='text-primary'>
           <tr>
-            <th className='header bg-default'>{props.lenguage === 'es' ? <>Nombre</> : <>Name</>}</th>
+            <th className='header bg-default'>{props.Language === 'es' ? <>Nombre</> : <>Name</>}</th>
             <th className='header bg-default'>Email</th>
-            <th className='header bg-default'>{props.lenguage === 'es' ? <>Redes Sociales</> : <>Social Media</>}</th>
+            <th className='header bg-default'>{props.Language === 'es' ? <>Redes Sociales</> : <>Social Media</>}</th>
           </tr>
         </thead>
         <tbody>

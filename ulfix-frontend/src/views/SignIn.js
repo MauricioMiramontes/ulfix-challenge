@@ -63,8 +63,8 @@ function SignIn (props) {
   return (
     <>
       <NavbarComp
-        lenguage={props.lenguage}
-        changeLenguage={props.changeLenguage}
+        Language={props.Language}
+        changeLanguage={props.changeLanguage}
         isAuthenticated={props.isAuthenticated}
         setIsAuthenticated={props.setIsAuthenticated}
       />
@@ -118,7 +118,7 @@ function SignIn (props) {
                           <Label check>
 
                             {
-                              props.lenguage === 'es'
+                              props.Language === 'es'
                                 ? <>¿No tienes cuenta aún?{' '}</>
                                 : <>Not registered yet?{' '}</>
                             }
@@ -130,7 +130,7 @@ function SignIn (props) {
                               }}
                             >
                               {
-                                props.lenguage === 'es'
+                                props.Language === 'es'
                                   ? <>Registrate</>
                                   : <>Sign Up{' '}</>
                               }
@@ -147,7 +147,7 @@ function SignIn (props) {
                         size='lg'
                         onClick={(e) => login(e)}
                       >
-                        {props.lenguage === 'es' ? <>Iniciar Sesion</> : <>Login</>}
+                        {props.Language === 'es' ? <>Iniciar Sesion</> : <>Login</>}
                       </Button>
                     </CardFooter>
                   </Card>
@@ -158,7 +158,7 @@ function SignIn (props) {
             </Container>
           </div>
         </div>
-        <Footer lenguage={props.lenguage} />
+        <Footer Language={props.Language} />
       </div>
     </>
   )
