@@ -6,7 +6,11 @@ const fs = require('fs') // file system
 
 const TOKEN_SECRET = 'spooky secret'
 
-function authenticateToken(req, res, next) {
+function generateAccessToken ({ id, email }) {
+  return jwt.sign({ email, id }, TOKEN_SECRET, { expiresIn: '18000s' })
+}
+
+function authenticateToken (req, res, next) {
   const authHeader = req.headers.authorization
   const token = authHeader && authHeader.split(' ')[1]
 
@@ -68,11 +72,22 @@ router.post('/', (req, res) => {
   }
 
   users.push(newUser)
+
   fs.writeFile('./mock_data/user_data.json', JSON.stringify(users),
     function (err, result) {
       if (err) console.log('error', err)
     })
-  res.send(newUser)
+
+  const accessToken = generateAccessToken({ email: newUser.email, id: newUser.id })
+  res.json(
+    {
+      accessToken,
+      user: {
+        email: newUser.id,
+        id: newUser.id
+      }
+    }
+  )
 })
 
 router.put('/:userId', authenticateToken, (req, res) => {
