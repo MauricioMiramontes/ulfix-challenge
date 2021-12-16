@@ -6,6 +6,7 @@ import Profile from './views/Profile.js'
 import SignIn from './views/SignIn.js'
 import SignUp from './views/SignUp.js'
 import UserList from './views/UserList.js'
+import EditUser from './views/EditUser.js'
 
 function App () {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -74,6 +75,21 @@ function App () {
               changeLenguage={(e) => setLenguage(e)}
               isAuthenticated={isAuthenticated}
               setIsAuthenticated={(e) => setIsAuthenticated(e)}
+            />
+          }
+        />
+        <Route
+          path='/edit-user'
+          element={
+            <EditUser
+              lenguage={lenguage}
+              changeLenguage={(e) => setLenguage(e)}
+              isAuthenticated={isAuthenticated}
+              setIsAuthenticated={(e) => setIsAuthenticated(e)}
+              userData={userData}
+              setUserData={(e) => setUserData(e)}
+              authToken={authToken}
+              setAuthToken={(e) => setAuthToken(e)}
             />
           }
         />

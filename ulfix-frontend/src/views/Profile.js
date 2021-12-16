@@ -171,7 +171,10 @@ function Profile (props) {
                           </Button>
                         </Col>
                         <Col md='6' sm='6'>
-                          <Button color='warning'>
+                          <Button
+                            color='warning'
+                            onClick={() => navigate('/edit-user')}
+                          >
                             {
                               props.lenguage === 'es'
                                 ? <>Editar</>
