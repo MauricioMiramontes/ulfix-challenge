@@ -158,7 +158,7 @@ function Profile (props) {
                               e.preventDefault()
                               setTabs(1)
                             }}
-                            href='#pablo'
+                            href='#ref'
                           >
                             {props.Language === 'es' ? 'Tecnologías' : 'Tecnologies'}
                           </NavLink>
@@ -172,7 +172,7 @@ function Profile (props) {
                               e.preventDefault()
                               setTabs(2)
                             }}
-                            href='#pablo'
+                            href='#ref'
                           >
                             {props.Language === 'es' ? 'Contacto' : 'Contact'}
                           </NavLink>

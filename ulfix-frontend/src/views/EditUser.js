@@ -42,10 +42,10 @@ function EditUser (props) {
       body: JSON.stringify(formData)
     })
       .then(response => response.json())
-      .then(userData => {
-        props.setAuthToken(userData.accessToken)
-        props.setUserData(userData.user)
-        console.log(userData)
+      .then(editResponse => {
+        props.setAuthToken(editResponse.accessToken)
+        props.setUserData(editResponse.user)
+        console.log(editResponse)
         navigate('/profile')
       })
       .catch(error => console.log(error))
