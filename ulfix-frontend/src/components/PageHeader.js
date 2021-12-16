@@ -26,8 +26,8 @@ function PageHeader (props) {
             <Col lg='4' md='5'>
               <img
                 alt='perfil'
-                className='img-fluid rounded-circle'
-                src={require('../assets/img/computer.png')}
+                className='img-fluid'
+                src={require('../assets/img/users.png')}
                 style={{ width: '250px', height: '250px' }}
               />
             </Col>
