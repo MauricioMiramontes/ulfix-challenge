@@ -6,11 +6,11 @@ const fs = require('fs') // file system
 
 const TOKEN_SECRET = 'spooky secret'
 
-function generateAccessToken ({ id, email }) {
+function generateAccessToken({ id, email }) {
   return jwt.sign({ email, id }, TOKEN_SECRET, { expiresIn: '18000s' })
 }
 
-function authenticateToken (req, res, next) {
+function authenticateToken(req, res, next) {
   const authHeader = req.headers.authorization
   const token = authHeader && authHeader.split(' ')[1]
 
@@ -124,7 +124,17 @@ router.put('/:userId', authenticateToken, (req, res) => {
       if (err) console.log('error', err)
     })
 
-  res.send(users[index])
+  const accessToken = generateAccessToken({ email: updatedUser.email, id: updatedUser.id })
+  res.json(
+    {
+      accessToken,
+      user: {
+        email: updatedUser.email,
+        id: updatedUser.id,
+        name: updatedUser.name
+      }
+    }
+  )
 })
 
 router.delete('/:userId', authenticateToken, (req, res) => {
