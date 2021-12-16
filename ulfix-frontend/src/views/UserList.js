@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react'
 
-// test data
-import data from '../test_data/user_data.js'
-
 // Components
 import NavbarComp from '../components/Navbar.js'
 import Footer from '../components/Footer'
@@ -24,8 +21,6 @@ function UserList (props) {
       .then(response => response.json())
       .then(dataUsers => setUsers(dataUsers))
       .catch(error => console.log(error))
-
-    console.log(data)
   }, [])
 
   return (
