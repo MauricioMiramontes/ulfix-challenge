@@ -4,8 +4,7 @@ CURD sencillo de usuarios
 - Backend desarrollado en Express
 
 ## Instrucciones de instalacion
-1. Clonar el repositorio
-El repositorio esta divido en dos carpeta, una para el frontend y otra para la API
+1. Clonar el repositorio, el repositorio está divido en dos carpeta, una para el frontend y otra para la API
 2. Entrar a las dos carpetas y correr en cada una el comando 
 ```
 npm install
@@ -14,5 +13,5 @@ npm install
 ```
 npm start
 ```
-En la liga http://localhost:3000/ estará corriendo la aplicacion de REACT
-En la liga http://localhost:3001/ estara corriendo la API
+- En la liga http://localhost:3000/ estará corriendo la aplicacion de REACT
+- En la liga http://localhost:3001/ estará corriendo la API
