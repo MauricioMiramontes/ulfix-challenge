@@ -44,10 +44,12 @@ function UserList (props) {
         />
         <section className='section section-coins'>
           <Container>
-            <h1>
-              {props.lenguage === 'es' ? <>Lista de usuarios</> : <>User List</>}
-            </h1>
-            <hr className='line-info' />
+            <Row>
+              <h1>
+                {props.lenguage === 'es' ? <>Lista de usuarios</> : <>User List</>}<br />
+                <hr className='line-info' />
+              </h1>
+            </Row>
             <Row>
               <UserTable users={users} lenguage={props.lenguage} />
             </Row>
