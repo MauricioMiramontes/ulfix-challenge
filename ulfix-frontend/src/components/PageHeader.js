@@ -7,16 +7,12 @@ import {
   Col
 } from 'reactstrap'
 
+import MovingSquares from '../components/Animations/MovingSquares.js'
+
 function PageHeader (props) {
   return (
     <div className='page-header header-filter'>
-      <div className='squares square1' />
-      <div className='squares square2' />
-      <div className='squares square3' />
-      <div className='squares square4' />
-      <div className='squares square5' />
-      <div className='squares square6' />
-      <div className='squares square7' />
+      <MovingSquares />
       <Container>
         <div className='content-center'>
           <Row className='row-grid justify-content-between align-items-center text-left'>

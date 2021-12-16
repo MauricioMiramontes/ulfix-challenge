@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import classnames from 'classnames'
 // reactstrap components
 import {
@@ -22,9 +22,9 @@ import { useNavigate } from 'react-router-dom'
 // core components
 import NavbarComp from '../components/Navbar.js'
 import Footer from '../components/Footer.js'
+import FollowSquares from '../components/Animations/FollowSquares.js'
 
 function SignUp (props) {
-  const [squarePerspective, setSquarePerspective] = useState('')
   const [emailFocus, setEmailFocus] = useState(false)
   const [nameFocus, setNameFocus] = useState(false)
   const [passwordFocus, setPasswordFocus] = useState(false)
@@ -32,28 +32,6 @@ function SignUp (props) {
   // Estado inicial del formulario
   const [formData, setFormData] = useState({ email: '', password: '', name: '' })
   const navigate = useNavigate()
-
-  useEffect(() => {
-    document.body.classList.toggle('register-page')
-    document.documentElement.addEventListener('mousemove', followCursor)
-    // Se especifica como limpiar este efecto
-    return function cleanup () {
-      document.body.classList.toggle('register-page')
-      document.documentElement.removeEventListener('mousemove', followCursor)
-    }
-  }, [])
-
-  const followCursor = (event) => {
-    const posX = event.clientX - window.innerWidth / 2
-    const posY = event.clientY - window.innerWidth / 6
-    setSquarePerspective(
-      'perspective(500px) rotateY(' +
-      posX * 0.05 +
-      'deg) rotateX(' +
-      posY * -0.05 +
-      'deg)'
-    )
-  }
 
   const signup = (e) => {
     fetch('http://localhost:3001/users/', {
@@ -95,16 +73,6 @@ function SignUp (props) {
             <Container>
               <Row>
                 <Col className='offset-lg-0 offset-md-3' lg='5' md='6'>
-                  <div
-                    className='square square-7'
-                    id='square7'
-                    style={{ transform: squarePerspective }}
-                  />
-                  <div
-                    className='square square-8'
-                    id='square8'
-                    style={{ transform: squarePerspective }}
-                  />
                   <Card className='card-register'>
                     <CardHeader>
                       <CardImg
@@ -175,36 +143,7 @@ function SignUp (props) {
                 </Col>
               </Row>
               <div className='register-bg' />
-              <div
-                className='square square-1'
-                id='square1'
-                style={{ transform: squarePerspective }}
-              />
-              <div
-                className='square square-2'
-                id='square2'
-                style={{ transform: squarePerspective }}
-              />
-              <div
-                className='square square-3'
-                id='square3'
-                style={{ transform: squarePerspective }}
-              />
-              <div
-                className='square square-4'
-                id='square4'
-                style={{ transform: squarePerspective }}
-              />
-              <div
-                className='square square-5'
-                id='square5'
-                style={{ transform: squarePerspective }}
-              />
-              <div
-                className='square square-6'
-                id='square6'
-                style={{ transform: squarePerspective }}
-              />
+              <FollowSquares />
             </Container>
           </div>
         </div>
