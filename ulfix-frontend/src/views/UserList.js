@@ -20,7 +20,9 @@ function UserList (props) {
   // API Call - Get Users
   useEffect(() => {
     // Se hace la llamada a la API para recolectar los datos de usurios
-    setUsers(data)
+    fetch('http://localhost:3001/users')
+      .then(response => response.json())
+      .then(dataUsers => setUsers(dataUsers))
 
     console.log(data)
   }, [])
