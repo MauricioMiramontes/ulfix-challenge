@@ -10,7 +10,7 @@ function generateAccessToken ({ id, email }) {
 }
 
 router.get('/signout', function (req, res, next) {
-  res.send('Signout')
+  res.send({ message: 'User signed out' })
 })
 
 router.post('/signin', (req, res) => {

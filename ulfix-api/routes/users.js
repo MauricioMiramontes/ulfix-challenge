@@ -6,11 +6,11 @@ const fs = require('fs') // file system
 
 const TOKEN_SECRET = 'spooky secret'
 
-function generateAccessToken({ id, email }) {
+function generateAccessToken ({ id, email }) {
   return jwt.sign({ email, id }, TOKEN_SECRET, { expiresIn: '18000s' })
 }
 
-function authenticateToken(req, res, next) {
+function authenticateToken (req, res, next) {
   const authHeader = req.headers.authorization
   const token = authHeader && authHeader.split(' ')[1]
 
@@ -38,13 +38,13 @@ router.get('/:userId', authenticateToken, function (req, res, next) {
 
   // Verify if user exists
   if (user === undefined) {
-    res.status(404).send('User not found')
+    res.status(404).send({ message: 'User not found' })
     return
   }
 
   // Verify if user is authenticated
   if (req.user.id !== user.id) {
-    res.status(403).send('Forbidden')
+    res.status(403).send({ message: 'Forbidden' })
     return
   }
 
@@ -57,7 +57,7 @@ router.post('/', (req, res) => {
 
   // Verify if user exists
   if (user !== undefined) {
-    res.status(404).send('User already exists')
+    res.status(404).send({ message: 'User already exists' })
     return
   }
 
@@ -97,13 +97,13 @@ router.put('/:userId', authenticateToken, (req, res) => {
 
   // Verify if user exists
   if (user === undefined) {
-    res.status(404).send('User not found')
+    res.status(404).send({ message: 'User not found' })
     return
   }
 
   // Verify if user is authenticated
   if (req.user.id !== user.id) {
-    res.status(403).send('Forbidden')
+    res.status(403).send({ message: 'Forbidden' })
     return
   }
 
@@ -143,13 +143,13 @@ router.delete('/:userId', authenticateToken, (req, res) => {
 
   // Verify if user exists
   if (user === undefined) {
-    res.status(404).send('User not found')
+    res.status(404).send({ message: 'User not found' })
     return
   }
 
   // Verify if user is authenticated
   if (req.user.id !== user.id) {
-    res.status(403).send('Forbidden')
+    res.status(403).send({ message: 'Forbidden' })
     return
   }
 
@@ -161,7 +161,9 @@ router.delete('/:userId', authenticateToken, (req, res) => {
     })
 
   res.status(200).send(
-    `Deleted user with id: ${req.params.userId}`
+    {
+      message: `Deleted user with id: ${req.params.userId}`
+    }
   )
 })
 
