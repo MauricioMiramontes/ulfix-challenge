@@ -62,5 +62,13 @@
     "password": "Nora",
     "created": "2020-05-20T00:00:00.000Z",
     "updated": "2020-05-20T00:00:00.000Z"
+  },
+  {
+    "id": "9",
+    "name": "Test User",
+    "email": "test@user.com",
+    "password": "123",
+    "created": "2020-05-20T00:00:00.000Z",
+    "updated": "2020-05-20T00:00:00.000Z"
   }
 ]
