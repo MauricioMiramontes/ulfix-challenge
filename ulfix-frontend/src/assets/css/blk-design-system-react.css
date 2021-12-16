@@ -11310,6 +11310,7 @@ p {
   margin-top: 30px;
   margin-bottom: 25px;
   font-weight: 600;
+  text-align: center;
   color: rgba(255, 255, 255, 0.8); }
   .title.title-up {
     text-transform: uppercase; }
