@@ -67,8 +67,9 @@ function SignIn (props) {
         props.setUserData(userData.user)
         props.setIsAuthenticated(true)
         console.log(userData)
+        navigate('/')
       })
-    navigate('/')
+      .catch(error => console.log(error))
   }
 
   const handleChange = (e) => {

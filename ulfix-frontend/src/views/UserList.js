@@ -23,6 +23,7 @@ function UserList (props) {
     fetch('http://localhost:3001/users')
       .then(response => response.json())
       .then(dataUsers => setUsers(dataUsers))
+      .catch(error => console.log(error))
 
     console.log(data)
   }, [])
