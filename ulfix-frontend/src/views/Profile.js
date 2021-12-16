@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // reactstrap components
 import {
@@ -16,19 +17,23 @@ import NavbarComp from '../components/Navbar.js'
 import Footer from '../components/Footer.js'
 import DeleteModal from '../components/DeleteUserModal.js'
 
-// test data
-import data from '../test_data/user_data.js'
-
-function Profile(props) {
+function Profile (props) {
   const [user, setUser] = useState({})
   const [deleteModal, setDeleteModal] = useState(false)
+  const navigate = useNavigate()
 
-  // API Call - Get Users
+  // API Call - Get User
   useEffect(() => {
     // Se hace la llamada a la API para recolectar los datos de usurios
-    setUser(data[0])
-
-    console.log(data[0])
+    fetch(`http://localhost:3001/users/${props.userData.id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${props.authToken}`
+      }
+    })
+      .then(response => response.json())
+      .then(dataUser => setUser(dataUser))
+      .catch(error => console.log(error))
   }, [])
 
   // Da formato a la fecha antes de mostrarla
@@ -40,7 +45,20 @@ function Profile(props) {
   }
 
   const deleteUser = () => {
-    console.log('deleteUser')
+    // Se hace la llamada a la API para recolectar los datos de usurios
+    fetch(`http://localhost:3001/users/${props.userData.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${props.authToken}`
+      }
+    })
+      .then(response => {
+        console.log(response.text())
+        props.setIsAuthenticated(false)
+        navigate('/sign-in')
+      })
+      .catch(error => console.log(error))
   }
 
   return (

@@ -35,6 +35,8 @@ function App () {
               changeLenguage={(e) => setLenguage(e)}
               isAuthenticated={isAuthenticated}
               setIsAuthenticated={(e) => setIsAuthenticated(e)}
+              userData={userData}
+              authToken={authToken}
             />
           }
         />
