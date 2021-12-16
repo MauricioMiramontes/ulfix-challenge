@@ -51,7 +51,14 @@ router.get('/:userId', authenticateToken, function (req, res, next) {
   res.send(user)
 })
 
+/* POST new user */
 router.post('/', (req, res) => {
+  // Check for required fields
+  if (!req.body.email || !req.body.password || !req.body.name) {
+    res.status(400).send({ message: 'Missing required fields' })
+    return
+  }
+
   const user = users.find(user => user.email === req.body.email)
   const newUserId = parseInt(users[users.length - 1].id) + 1
 
@@ -91,6 +98,7 @@ router.post('/', (req, res) => {
   )
 })
 
+/* Update existing user if a field is not send in the body the privious value will be kept, Users can only edit themselves */
 router.put('/:userId', authenticateToken, (req, res) => {
   const user = users.find(user => user.id === req.params.userId)
   const index = users.indexOf(user)
@@ -137,6 +145,7 @@ router.put('/:userId', authenticateToken, (req, res) => {
   )
 })
 
+/* Delete existing user, users can only delete themselves */
 router.delete('/:userId', authenticateToken, (req, res) => {
   const user = users.find(user => user.id === req.params.userId)
   const index = users.indexOf(user)
