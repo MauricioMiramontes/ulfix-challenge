@@ -25,7 +25,7 @@ import { useNavigate } from 'react-router-dom'
 import NavbarComp from '../components/Navbar.js'
 import Footer from '../components/Footer.js'
 
-function SignIn (props) {
+function SignIn(props) {
   const [squarePerspective, setSquarePerspective] = useState('')
   const [emailFocus, setEmailFocus] = useState(false)
   const [passwordFocus, setPasswordFocus] = useState(false)
@@ -38,7 +38,7 @@ function SignIn (props) {
     document.body.classList.toggle('register-page')
     document.documentElement.addEventListener('mousemove', followCursor)
     // Se especifica como limpiar este efecto
-    return function cleanup () {
+    return function cleanup() {
       document.body.classList.toggle('register-page')
       document.documentElement.removeEventListener('mousemove', followCursor)
     }
@@ -59,6 +59,9 @@ function SignIn (props) {
   const login = (e) => {
     fetch('http://localhost:3001/auth/signin', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(formData)
     })
       .then(response => response.json())
